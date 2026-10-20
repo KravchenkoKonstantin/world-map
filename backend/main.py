@@ -23,7 +23,6 @@ engine = create_engine(DB_CONNECTION)
 @app.get("/api/countries", summary="Получить все страны (GeoJSON)")
 def get_countries():
     with engine.connect() as conn:
-        # ИСПРАВЛЕНО: используем geometry вместо geom
         query = text("""
             SELECT jsonb_build_object(
                 'type', 'FeatureCollection',
@@ -60,7 +59,6 @@ def get_country_info(country_name: str):
             
         country_data = dict(result._mapping)
         
-        # ИСПРАВЛЕНО: удаляем колонку geometry
         country_data.pop('geometry', None) 
         
         return country_data

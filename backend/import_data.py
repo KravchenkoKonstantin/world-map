@@ -24,4 +24,4 @@ gdf.to_postgis(
     index=False
 )
 
-print(f"Готово! Данные загружены за {time.time() - start_time:.2f} секунд.")
+print(f"Данные загружены за {time.time() - start_time:.2f} секунд.")
